@@ -1,6 +1,16 @@
 const express = require("express");
 const app = express();
 
-app.get('/', (req, res)=>{
-    res.end(req.arguments[0]);
+var port = process.env.PORT || 8080;
+
+app.get('/:date', (req, res)=>{
+    res.end(req.params.date);
+});
+
+app.get('/', (res, req)=>{
+    res.end('Try again with a date');
+});
+
+app.listen(port, ()=>{
+    console.log('Listening on port ' + port);
 });
